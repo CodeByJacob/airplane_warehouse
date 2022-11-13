@@ -1,3 +1,10 @@
+Table Airport {
+    airport_id number
+    iata_code varchar
+    airport_name varchar
+    country varchar
+}
+
 Table Airplane {
     airplaneID integer
     airlane_name varchar
@@ -35,8 +42,8 @@ Table FlightDetails {
     airplaneID number
     departure_time timestamp
     ariwall_time timestamp
-    departure_code varchar
-    destination_code varchar
+    departure_code number
+    destination_code number
     flight_cost integer
     departure_airport_cost integer
     arriwall_airport_cost integer
@@ -70,3 +77,5 @@ Ref: Ticket.passangerID > Passanger.passangerID
 Ref: Ticket.flightID > FlightDetails.flightID
 Ref: Airplane.airplaneID < FlightDetails.airplaneID
 Ref: Gender.id < Passanger.gender_id
+Ref: Airport.airport_id > FlightDetails.departure_code
+Ref: Airport.airport_id > FlightDetails.destination_code
