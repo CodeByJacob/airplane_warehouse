@@ -1,0 +1,34 @@
+ID,IATA_CODE,CITY,COUNTRY
+1,ATH,Atheny,Greece
+2,CFU,Corfu,Greece
+3,HER,Heraklion,Greece
+4,SKG,Thessaloniki,Greece
+5,CHQ,Chania,Greece
+6,FRA,Frankfurt am Main,Germany
+7,MUC,Munich,Germany
+8,DUS,Dusseldorf,Germany
+9,BER,Berlin,Germany
+10,ABZ,Aberdeen,Great Britain
+11,GLA,Glasgow,Great Britain
+12,EDI,Edynburg,Great Britain
+13,STN,London-Stansted,Great Britain
+14,GDN,Gdansk,Poland
+15,WRO,Wroclaw,Poland
+16,WAW,Warsaw-Chopina,Poland
+17,KRK,Cracow,Poland
+18,BCN,Barcelona,Spain
+19,BIO,Bilbao,Spain
+20,IBZ,Ibiza,Spain
+21,MAD,Madrid,Spain
+22,FCO,Rome,Italy
+23,VCE,Venice,Italy
+24,BLQ,Bologna,Italy
+25,PSA,Pisa,Italy
+26,DME,Moscow,Russia
+27,LED,St. Petersburg,Russia
+28,YKS,Yakutsk,Russia
+29,KRR,Kaliningrad,Russia
+30,ADA,Adana,Turkey
+31,YEI,Bursa,Turkey
+32,GZT,Gazientep,Turkey
+33,OGU,Ordu,Turkey
