@@ -1,0 +1,72 @@
+Table Airplane {
+    airplaneID integer
+    airlane_name varchar
+    height integer
+    lenght integer
+    wingspan integer
+    weight integer
+    max_speed integer
+    max_weight integer
+    total_seats_eco integer
+    total_seats_bus integer
+    fuel_capacity integer
+    production_year integer
+
+    Indexes {
+        (airplaneID) [PK]
+    }
+}
+
+Table Ticket {
+    ticketID integer
+    passangerID integer
+    flightID integer
+    place varchar
+    flight_number varchar
+    price integer
+
+    Indexes {
+        (ticketID) [PK]
+    }
+}
+
+Table FlightDetails {
+    flightID number
+    airplaneID number
+    departure_time timestamp
+    ariwall_time timestamp
+    departure_code varchar
+    destination_code varchar
+    flight_cost integer
+    departure_airport_cost integer
+    arriwall_airport_cost integer
+    total_free_bus_seats integer
+    total_free_eco_seats integer
+    workers_cost integer
+    distance integer
+    Indexes {
+        (flightID) [PK]
+    }
+}
+
+Table Gender {
+    id number
+    gender_str varchar
+}
+
+Table Passanger {
+    passangerID number
+    gender_id number
+    age integer
+    weight integer
+    id_number varchar
+
+    Indexes {
+        (passangerID) [PK]
+    }
+}
+
+Ref: Ticket.passangerID > Passanger.passangerID
+Ref: Ticket.flightID > FlightDetails.flightID
+Ref: Airplane.airplaneID < FlightDetails.airplaneID
+Ref: Gender.id < Passanger.gender_id
