@@ -5,7 +5,6 @@ CREATE TABLE `aiport` (
   `country` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
-
 CREATE TABLE `airline` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
@@ -13,11 +12,9 @@ CREATE TABLE `airline` (
   `completed_flights` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
-
 CREATE TABLE `crew` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
 
 CREATE TABLE `flight` (
   `id` int(11) NOT NULL,
@@ -36,13 +33,11 @@ CREATE TABLE `flight` (
   `status` varchar(255) COLLATE utf8mb4_polish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
-
 CREATE TABLE `flight_booking` (
   `id` int(11) NOT NULL,
   `passenger_id` int(11) DEFAULT NULL,
   `ticket_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
 
 CREATE TABLE `passenger` (
   `id` int(11) NOT NULL,
@@ -50,10 +45,10 @@ CREATE TABLE `passenger` (
   `lastname` varchar(255) COLLATE utf8mb4_polish_ci DEFAULT NULL,
   `gender` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
   `age` int(11) NOT NULL,
+  `nationality` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL,
   `phone` int(11) DEFAULT NULL,
   `passport` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
 
 CREATE TABLE `pilot` (
   `id` int(11) NOT NULL,
@@ -65,7 +60,6 @@ CREATE TABLE `pilot` (
   `crew_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
-
 CREATE TABLE `plane` (
   `id` int(11) NOT NULL,
   `airline_id` int(11) DEFAULT NULL,
@@ -75,7 +69,6 @@ CREATE TABLE `plane` (
   `number_of_used_seats` int(11) DEFAULT NULL,
   `amount_of_fuel` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
 
 CREATE TABLE `stewardess` (
   `id` int(11) NOT NULL,
@@ -87,7 +80,6 @@ CREATE TABLE `stewardess` (
   `crew_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
-
 CREATE TABLE `ticket` (
   `id` int(11) NOT NULL,
   `flight_id` int(11) NOT NULL,
@@ -96,6 +88,7 @@ CREATE TABLE `ticket` (
   `price` int(11) DEFAULT NULL,
   `relief` varchar(255) COLLATE utf8mb4_polish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
 
 ALTER TABLE `aiport`
   ADD PRIMARY KEY (`id`);
@@ -138,8 +131,10 @@ ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`),
   ADD KEY `flight_id` (`flight_id`);
 
+
 ALTER TABLE `aiport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 
 ALTER TABLE `flight`
   ADD CONSTRAINT `flight_ibfk_1` FOREIGN KEY (`airline_id`) REFERENCES `airline` (`id`),
@@ -167,5 +162,3 @@ ALTER TABLE `stewardess`
 
 ALTER TABLE `ticket`
   ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`flight_id`) REFERENCES `flight` (`id`);
-COMMIT;
-
