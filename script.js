@@ -166,7 +166,8 @@ const csvWriter = createCsvWriter({
         {id: "arrival_date", title: "ARRIVAL_DATE"},
         {id: "departure_date", title: "DEPARTURE_DATE"},
         {id: "aircraft_id", title: "AIRCRAFT_ID"},
-        {id: "route_id", title: "ROUTE_ID"}
+        {id: "route_id", title: "ROUTE_ID"},
+        {id: "total_fuel_cost", title: "TOTAL_FUEL_COST"}
     ]
 })
 for (let i=1; i<routeCount + 1; i++){
@@ -174,7 +175,8 @@ for (let i=1; i<routeCount + 1; i++){
     departureCost = Math.floor(Math.random() * (100000 - 30000 + 1)) + 30000;
     flightStatusIndex = Math.floor(Math.random() *  FLIGHT_STATUS.length);
     aircraftIndex = Math.floor(Math.random() * (aircraftCount - 10))
-    routeIndex = Math.floor(Math.random() * (2112) + 1)
+    routeIndex = Math.floor(Math.random() * (2112) + 1);
+    fuel_cost = Math.floor(Math.random() * (1000000 - 2000000 + 1)) + 2000000;
     if(flightStatusIndex === 2 || flightStatusIndex === 4){
         records[i - 1] = {
                         id: i,
@@ -184,7 +186,8 @@ for (let i=1; i<routeCount + 1; i++){
                         arrival_date: null,
                         departure_date: null,
                         aircraft_id: aircraftIndex,
-                        route_id: routeIndex
+                        route_id: routeIndex,
+                        total_fuel_cost: fuel_cost
                     }
         aircrafts[i - 1] = aircraftIndex;
     }
@@ -198,20 +201,17 @@ for (let i=1; i<routeCount + 1; i++){
             departure_cost: departureCost,
             arrival_date: arrivalDate.toLocaleString("en-GB", {
                 day: "numeric",
-                month: "short",
+                month: "numeric",
                 year: "numeric",
-                hour: "numeric",
-                minute: "2-digit"
               }),
             departure_date: departuteDate.toLocaleString("en-GB", {
                 day: "numeric",
-                month: "short",
+                month: "numeric",
                 year: "numeric",
-                hour: "numeric",
-                minute: "2-digit"
               }),
             aircraft_id: aircraftIndex,
-            route_id: routeIndex
+            route_id: routeIndex,
+            total_fuel_cost: fuel_cost
         }
         aircrafts[i - 1] = aircraftIndex;
     }
@@ -256,29 +256,29 @@ csvWriter.writeRecords(records);
 // }
 // csvWriter.writeRecords(records);
 // //------------------------------------------------------------------------------------------------------------------------------------------------
-const csvWriter2 = createCsvWriter({
-    path: 'AIRLINE_TRANSACTION.csv',
-    header: [
-        {id: "id", title: "ID"}, 
-        {id: "flight_schedule_id", title: "FLIGHT_SCHEDULE_ID"}, 
-        {id: "passanger_id", title: "PASSANGER_ID"}, 
-        {id: "aircraft_seat_id", title: "AIRCRAFT_SEAT_ID"}
-    ]
-});
-var records2 = []
-var transactionID = 0;
-flight_shedule_id = 1;
-for (let i=1; i<flightSchedulesCount + 1; i++){
-    buyedseats = (Math.random() * 0.4) + 0.6;
-    for(let p=1; p<Math.floor(seatsCount * buyedseats) + 1; p++){
-        pasenngerIndex = Math.floor(Math.random() * (clientCount)) + 1;
-        records2[transactionID] = {
-            id: transactionID + 1,
-            flight_schedule_id: i,
-            passanger_id: pasenngerIndex,
-            aircraft_seat_id: (aircrafts[i - 1] * seatsCount) + p
-        }
-        transactionID++;
-    }
-}
-csvWriter2.writeRecords(records2);
+// const csvWriter2 = createCsvWriter({
+//     path: 'AIRLINE_TRANSACTION.csv',
+//     header: [
+//         {id: "id", title: "ID"},
+//         {id: "flight_schedule_id", title: "FLIGHT_SCHEDULE_ID"},
+//         {id: "passanger_id", title: "PASSANGER_ID"},
+//         {id: "aircraft_seat_id", title: "AIRCRAFT_SEAT_ID"}
+//     ]
+// });
+// var records2 = []
+// var transactionID = 0;
+// flight_shedule_id = 1;
+// for (let i=1; i<flightSchedulesCount + 1; i++){
+//     buyedseats = (Math.random() * 0.4) + 0.6;
+//     for(let p=1; p<Math.floor(seatsCount * buyedseats) + 1; p++){
+//         pasenngerIndex = Math.floor(Math.random() * (clientCount)) + 1;
+//         records2[transactionID] = {
+//             id: transactionID + 1,
+//             flight_schedule_id: i,
+//             passanger_id: pasenngerIndex,
+//             aircraft_seat_id: (aircrafts[i - 1] * seatsCount) + p
+//         }
+//         transactionID++;
+//     }
+// }
+// csvWriter2.writeRecords(records2);
